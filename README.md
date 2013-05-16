@@ -14,7 +14,7 @@ in your header.
 So you can yield a section anywhere in any view, even if that view is processed
 before your section is declared.
 
-Sound good? Awesome! See below for a useage guide.
+Sound good? Awesome! See below for a usage guide.
 
 ## Usage
 
