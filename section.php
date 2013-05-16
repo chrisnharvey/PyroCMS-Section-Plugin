@@ -29,7 +29,7 @@ class Plugin_Section extends Plugin
                 static::$sections[$section] = '';
             }
             
-            static::$sections[$section] .= $content;
+            static::$sections[$section] .= $this->parser->parse_string($content, array(), true);
 
             return null;
         }
