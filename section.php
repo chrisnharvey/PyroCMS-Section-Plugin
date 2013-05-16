@@ -11,7 +11,8 @@
  */
 class Plugin_Section extends Plugin
 {
-    public static $sections = array();
+    protected static $sections = array();
+    protected static $used     = array();
 
     public function __construct()
     {
@@ -34,6 +35,9 @@ class Plugin_Section extends Plugin
             return null;
         }
 
+        // Add this to our used array, so we can replace it later, even if it wasn't set
+        static::$used[] = $section;
+
         // Replace the lex tag with our cool syntax so we can easily replace it later
         return "{@ {$section} @}";
     }
@@ -42,8 +46,9 @@ class Plugin_Section extends Plugin
     {
         $output = ob_get_clean();
 
-        foreach (static::$sections as $name => $section) {
-            $output = str_replace("{@ {$name} @}", $section, $output);
+        foreach (static::$used as $section) {
+            $value = array_key_exists($section, static::$sections) ? static::$sections[$section] : null;
+            $output = str_replace("{@ {$section} @}", $value, $output);
         }
 
         echo $output;
