@@ -1,4 +1,6 @@
 # PyroCMS Section Plugin
+_Deprecated: Looking for a new maintainer for this package. Open an issue if interested._
+
 
 Use Laravel Blade style sections in your PyroCMS templates with this simple plugin.
 
